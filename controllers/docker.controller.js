@@ -1,7 +1,8 @@
-
+var DockerSocket = require('dockerode');
 
 exports.runContainer = (req, res) => {
-
+    var docker = new DockerSocket({ socketPath: '/var/run/docker.sock' });
+    var container = docker.getContainer(req.params.id);
     // random number between 20000 and 60000
     var port = Math.floor(Math.random() * (60000 - 20000 + 1)) + 20000;
 
@@ -10,9 +11,9 @@ exports.runContainer = (req, res) => {
         Tty: true,
         OpenStdin: true,
         StdinOnce: true,
-        ExposedPorts: {
-            '22/tcp': {}
-        },
+        // ExposedPorts: {
+        //     '22/tcp': {}
+        // },
         HostConfig: {
             PortBindings: {
                 '22/tcp': [{
@@ -33,4 +34,6 @@ exports.runContainer = (req, res) => {
     }).on('error', function (err) {
         console.log("Error : " + err);
     });
+
+    res.status(200).json({"status": "Container started !", "port": port });
 }
