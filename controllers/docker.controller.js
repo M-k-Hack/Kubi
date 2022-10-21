@@ -1,5 +1,6 @@
 var DockerSocket = require('dockerode');
 
+
 exports.runContainer = (req, res) => {
     var docker = new DockerSocket({ socketPath: '/var/run/docker.sock' });
     var container = docker.getContainer(req.params.id);
@@ -11,9 +12,6 @@ exports.runContainer = (req, res) => {
         Tty: true,
         OpenStdin: true,
         StdinOnce: true,
-        // ExposedPorts: {
-        //     '22/tcp': {}
-        // },
         HostConfig: {
             PortBindings: {
                 '22/tcp': [{
@@ -31,9 +29,22 @@ exports.runContainer = (req, res) => {
         console.log("Container created, ID : " + container.id);
     }).on('start', function (container) {
         console.log("Container started, ID : " + container.id);
+        
     }).on('error', function (err) {
         console.log("Error : " + err);
     });
 
     res.status(200).json({"status": "Container started !", "port": port });
 }
+
+exports.stopContainer = (req, res) => {
+    var docker = new DockerSocket({ socketPath: '/var/run/docker.sock' });
+    var container = docker.getContainer(req.params.id);
+    container.stop().then(function (data) {
+        container.remove();
+    });
+    res.status(200).json({ "status": "Container stopped !" });
+}
+
+
+

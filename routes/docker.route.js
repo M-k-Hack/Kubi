@@ -1,4 +1,4 @@
-const checkAdmin = require('../middleware/checkAdmin');
+const checker = require('../middleware/checker');
 
 module.exports = app => {
     const dockerController = require('../controllers/docker.controller');
@@ -6,7 +6,8 @@ module.exports = app => {
     const router = require("express").Router();
 
     router.get('/start', dockerController.runContainer);
-    router.delete('/stop', [checkAdmin], dockerController.stopContainer);
+    // route to stop container
+    router.get('/stop/:id', [checker.checkAdmin], dockerController.stopContainer);
 
     app.use('/api/docker', router);
 }

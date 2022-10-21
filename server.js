@@ -13,7 +13,7 @@ app.use(bodyParser.json());
 require("./routes/docker.route.js")(app);
 
 // Run backgournd task to delete expired containers
-setInterval(dockerModel.deleteExpiredContainer.bind(null, 3), 15000);
+setInterval(dockerModel.deleteExpiredContainer.bind(null, 60), 60000);
 
 app.get('/', (req, res) => {
   res.send('Hello World!')
@@ -24,3 +24,4 @@ app.listen(port,"127.0.0.1", () => {
 });
 
 
+// Kontainer Unified By Internet
