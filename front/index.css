@@ -1,0 +1,35 @@
+body {
+    padding-top: 60px;
+    font-family: 'Courier New', monospace;
+    background-color: darkslategrey;
+    color: white;
+}
+
+h1 {
+    margin: auto;
+    text-align: center;
+    /* define size*/
+
+}
+
+h2 {
+    margin: auto;
+    text-align: center;
+}
+
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 15%;
+    height: 15%;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+form {
+    margin: auto;
+    text-align: center;
+    font-size:15%;
+    size: 15%;
+}
