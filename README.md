@@ -1,5 +1,5 @@
 <h1 align="center"> Kubi </h1> <br> 
-<h2 align="center"> Kontainer Unified By Internet </h2> <br> 
+<h2 align="center"> Kontainer Unified By Internet </h2> 
 
 <p>logo</p>
 
