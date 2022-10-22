@@ -40,3 +40,18 @@ select {
     display: block;
     margin: 0 auto;
 }
+
+input[type=submit] {
+    /* Center */
+    display: block;
+    margin: 0 auto;
+
+    /* Style */
+    margin-top: 20px;
+    width: 250px;
+    height: 30px;
+    font-family: inherit;
+    border:none;
+    border-radius: 5px;
+
+}
