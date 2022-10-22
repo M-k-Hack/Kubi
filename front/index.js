@@ -45,7 +45,7 @@ form.addEventListener('submit', (e) => {
                 var div = document.getElementById('loader');
                 div.remove();
                 var p = document.createElement('p');
-                p.innerText = "Container started on port " + port;
+                p.innerText = "Container " + container + " started on domain "+ document.domain +" port " + port;
                 p.className = "text-success";
                 document.body.appendChild(p);
             })
