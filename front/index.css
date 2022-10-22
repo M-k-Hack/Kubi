@@ -8,8 +8,6 @@ body {
 h1 {
     margin: auto;
     text-align: center;
-    /* define size*/
-
 }
 
 h2 {
@@ -27,9 +25,18 @@ img {
     margin-bottom: 50px;
 }
 
-form {
-    margin: auto;
-    text-align: center;
-    font-size:15%;
-    size: 15%;
+select {
+    /* style element */
+    width: 250px;
+    height: 30px;
+    border: 1px solid #999;
+    font-size: 18px;
+    color: #1c87c9;
+    background-color: #eee;
+    border-radius: 5px;
+    box-shadow: 4px 4px #ccc;
+
+    /* center element */
+    display: block;
+    margin: 0 auto;
 }
