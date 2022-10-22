@@ -10,6 +10,7 @@ const port = 3000
 app.use(express.json())
 app.use(bodyParser.json());
 app.use(express.static(__dirname + '/front'))
+app.use(express.static(__dirname + '/admin'))
 
 // Model db
 const db = require("./models");
@@ -46,6 +47,10 @@ setInterval(dockerModel.deleteExpiredContainer.bind(null, 60), 60000);
 // Send front
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/front/index.html');
+})
+
+app.get('/admin', (req, res) => {
+  res.sendFile(__dirname + '/admin/admin.html');
 })
 
 // start server

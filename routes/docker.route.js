@@ -9,5 +9,7 @@ module.exports = app => {
     // route to stop container
     router.post('/stop/:id', [checker.checkAdmin], dockerController.stopContainer);
 
+    router.post('/running', [checker.checkAdmin], dockerController.getRunningContainers);
+
     app.use('/api/docker', router);
 }

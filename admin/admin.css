@@ -1,0 +1,61 @@
+body {
+    padding-top: 60px;
+    font-family: 'Courier New', monospace;
+    background-color: 	#101010;
+    color: white;
+}
+
+h1 {
+    margin: auto;
+    text-align: center;
+}
+
+h2 {
+    margin: auto;
+    text-align: center;
+}
+
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 15%;
+    height: 15%;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+/* Center input*/
+input[type=text] {
+    display: block;
+    margin: 0 auto;
+}
+
+/* Style input */
+input[type=text] {
+    width: 250px;
+    height: 30px;
+    border: 1px solid #999;
+    font-size: 18px;
+    color: #1c87c9;
+    background-color: #eee;
+    border-radius: 5px;
+    box-shadow: 4px 4px #ccc;
+}
+
+/*Center button*/
+button {
+    display: block;
+    margin: 0 auto;
+}
+
+/* Style button */
+input {
+    margin-top: 20px;
+    width: 250px;
+    height: 30px;
+    font-family: inherit;
+    font-size: large;
+    border: none;
+    border-radius: 5px;
+}

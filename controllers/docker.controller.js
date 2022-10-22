@@ -52,5 +52,12 @@ exports.stopContainer = (req, res) => {
     res.status(200).json({ "status": "Container stopped !" });
 }
 
+exports.getRunningContainers = (req, res) => {
+    var docker = new DockerSocket({ socketPath: '/var/run/docker.sock' });
+    docker.listContainers(function (err, containers) {
+        console.log(containers);
+        res.status(200).json({ "response": containers });
+    });
+}
 
 
