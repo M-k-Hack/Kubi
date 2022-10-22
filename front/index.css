@@ -1,7 +1,7 @@
 body {
     padding-top: 60px;
     font-family: 'Courier New', monospace;
-    background-color: darkslategrey;
+    background-color: 	#101010;
     color: white;
 }
 
@@ -51,7 +51,43 @@ input[type=submit] {
     width: 250px;
     height: 30px;
     font-family: inherit;
-    border:none;
+    border: none;
     border-radius: 5px;
 
+}
+
+/* Loader */
+
+.loader {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    border: 8px solid #f3f3f3;
+    /* Light grey */
+    border-top: 8px solid rgb(86, 231, 86);
+    /* Blue */
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.text-success {
+    color: green;
+    text-align: center;
+}
+
+.text-failed {
+    color: red;
+    text-align: center;
 }

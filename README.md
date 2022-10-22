@@ -32,15 +32,15 @@
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
 
-We needed to orchestrate container for a CTF but a simple way. So we created this.
+We need to orchestrate container for a CTF by a simple way. So we created this.
 
 ## Features
 
-A few of the things you can do with Kubi :
+Some things than you can do with Kubi :
 
-* You can run containers wit a simple web request on a random port.
+* You can run containers with a simple web request on a random port.
 * You can upload docker images to run it.
-* You havce a (not really) nice web interface to interact with endpoints.
+* You have a (not really) nice web interface to interact with endpoints.
 
 ## Feedback
 
@@ -48,7 +48,7 @@ Feel free to send us feedback. [File an issue](https://github.com/gitpoint/git-p
 
 ## Contributors
 
-For the moment, only MAK'HACK members can contribute to this project.
+At the moment, only MAK'HACK members can contribute to this project.
 
 ## Requirements
 
@@ -80,7 +80,7 @@ Also don't forget to enable [Access Control](https://www.mongodb.com/docs/v4.4/t
 
 If your MongoDB instance is not on the same machine, change your bind_ip in `/etc/mongod.conf` to 0.0.0.0.
 
-If you build the docker image ubuntu previously. Add a line in your mongoDB just created (don't forget to auth):
+If you built the docker image ubuntu previously, Add a line in your mongoDB just created (don't forget to auth):
 
 ```bash
 db.containers.insert({name:"My Nice Ubuntu Image", name_container:"ubuntu", "exposed_port":22})
