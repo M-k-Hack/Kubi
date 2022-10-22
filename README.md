@@ -136,4 +136,4 @@ MIT License.
 [issues-shield]: https://img.shields.io/github/issues/M-k-Hack/Kubi.svg?style=for-the-badge
 [issues-url]: https://github.com/M-k-Hack/Kubi/issues
 [license-shield]: https://img.shields.io/github/license/M-k-Hack/Kubi.svg?style=for-the-badge
-[license-url]: https://github.com/M-k-Hack/Kubi/blob/master/LICENSE
+[license-url]: https://github.com/M-k-Hack/Kubi/master/LICENSE
