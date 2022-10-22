@@ -5,7 +5,7 @@ module.exports = app => {
 
     const router = require("express").Router();
 
-    router.get('/start', dockerController.runContainer);
+    router.get('/start/:id', dockerController.runContainer);
     // route to stop container
     router.get('/stop/:id', [checker.checkAdmin], dockerController.stopContainer);
 

@@ -15,8 +15,6 @@ function getContainer() {
             }
         })
         .catch(error => console.error(error));
-
-
 }
 
 getContainer()
