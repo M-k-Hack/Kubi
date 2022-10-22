@@ -90,7 +90,7 @@ Now, clone the project :
 ```bash
 git clone https://github.com/M-k-Hack/Kubi.git
 ```
-Create a `.env` under a directory called `./vars/ file`, and add your credententials, etc... :
+Create a `.env` file under a directory called `./vars/`, and add your credententials, etc... :
 ```
 ADMIN_TOKEN=
 DB_HOST=
