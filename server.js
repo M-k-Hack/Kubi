@@ -1,5 +1,6 @@
-const express = require('express')
-const bodyParser = require('body-parser')
+const express = require('express');
+const bodyParser = require('body-parser');
+const fileUpload = require('express-fileupload');
 const dockerModel = require('./models/docker.model');
 
 const app = express()
@@ -7,10 +8,11 @@ const port = 3000
 
 
 // mis config
-app.use(express.json())
+app.use(express.json());
 app.use(bodyParser.json());
-app.use(express.static(__dirname + '/front'))
-app.use(express.static(__dirname + '/admin'))
+app.use(fileUpload());
+app.use(express.static(__dirname + '/front'));
+app.use(express.static(__dirname + '/admin'));
 
 // Model db
 const db = require("./models");
@@ -18,6 +20,7 @@ const Container = db.container;
 
 // configdb
 const dbConfig = require("./config/db.config.js");
+const { checkAdmin } = require('./middleware/checker');
 
 // Connect to db
 db.mongoose
