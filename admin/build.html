@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Admin Kubi | Build </title>
+        <link rel="stylesheet" href="./index.css">
+    </head>
+    <body>
+        <h1>Admin Kubi</h1>
+        <img src="./LOGO_S_ROUNDED.png">
+        <!--Basic file upload, asking for a port (number) and a name (text) -->
+        <form action="/api/docker/build" method="post" enctype="multipart/form-data">
+            <input type="file" name="file" id="file">
+            <input type="text" name="name" id="name" placeholder="name">
+            <input type="number" name="port" id="port" placeholder="port">
+            <input type="submit" value="Upload" name="submit">
+        </form>
+        <script src="./admin.js"></script>
+    </body>
+</html>

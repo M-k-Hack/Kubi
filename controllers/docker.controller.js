@@ -61,3 +61,31 @@ exports.getRunningContainers = (req, res) => {
 }
 
 
+exports.buildContainer = (req, res) => {
+    var docker = new DockerSocket({ socketPath: '/var/run/docker.sock' });
+    var tarStream = req.files.file.data;
+    var imageName = req.body.name;
+    var exposedPort = req.body.port;
+
+    // build image from tar stream and if successfull, add it to the mongodb
+    docker.buildImage(tarStream, { t: imageName }, function (err, stream) {
+        if (err) {
+            console.log("Error building image : " + err);
+            res.status(500).json({ "error": err });
+        }
+        stream.pipe(process.stdout);
+        stream.on('end', function () {
+            console.log("Image built and stored in docker");
+            // save image to mongo database
+            const containers = new Container({
+                name: imageName,
+                name_container: imageName,
+                exposed_port: exposedPort
+            });
+            containers.save(containers)
+                .then(data => { res.status(200).json({ "response": "Image stored in database" }) })
+                .catch(err => { res.status(500).json({ "response": "Error storing image in database" }) });
+        });
+    });
+}
+

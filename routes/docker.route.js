@@ -11,5 +11,7 @@ module.exports = app => {
 
     router.post('/running', [checker.checkAdmin], dockerController.getRunningContainers);
 
+    router.post('/build', dockerController.buildContainer);
+
     app.use('/api/docker', router);
 }
