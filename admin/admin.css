@@ -43,6 +43,12 @@ input[type=text] {
     box-shadow: 4px 4px #ccc;
 }
 
+/* Input file */
+input[type=file] {
+    display: block;
+    margin: 0 auto;
+}
+
 /*Center button*/
 button {
     display: block;

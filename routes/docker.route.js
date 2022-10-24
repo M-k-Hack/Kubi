@@ -11,5 +11,7 @@ module.exports = app => {
 
     router.get('/running', [authJwt.verifyToken, authJwt.isAdmin], dockerController.getRunningContainers);
 
+    router.post('/build', dockerController.buildContainer);
+
     app.use('/api/docker', router);
 }
