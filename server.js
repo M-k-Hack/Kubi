@@ -21,7 +21,6 @@ const Role = db.role;
 
 // configdb
 const dbConfig = require("./config/db.config.js");
-const { checkAdmin } = require('./middleware/checker');
 
 // Connect to db
 db.mongoose
