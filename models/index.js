@@ -5,6 +5,10 @@ const db = {};
 
 db.mongoose = mongoose;
 
-db.container = require("../models/container.model.js");
+db.container = require("../models/container.model");
+db.user = require("./user.model");
+db.role = require("./role.model");
+
+db.ROLES = ["user", "admin"];
 
 module.exports = db;

@@ -15,6 +15,7 @@ app.use(express.static(__dirname + '/admin'))
 // Model db
 const db = require("./models");
 const Container = db.container;
+const Role = db.role;
 
 // configdb
 const dbConfig = require("./config/db.config.js");
@@ -28,6 +29,7 @@ db.mongoose
   useUnifiedTopology: true
 })
 .then(() => {
+  initial();
   console.log("Successfully connect to MongoDB.");
 })
 .catch(err => {
@@ -39,6 +41,8 @@ db.mongoose
 // get docker routes
 require("./routes/docker.route.js")(app);
 require("./routes/container.route.js")(app);
+require("./routes/auth.route.js")(app);
+require("./routes/user.route.js")(app);
 
 // Run backgournd task to delete expired containers
 setInterval(dockerModel.deleteExpiredContainer.bind(null, 60), 60000);
@@ -59,26 +63,26 @@ app.listen(port, "0.0.0.0", () => {
 });
 
 function initial() {
-  Container.estimatedDocumentCount((err, count) => {
+  Role.estimatedDocumentCount((err, count) => {
     if (!err && count === 0) {
-      new Container({
-        name: "Challenge 1 : Mail-Privesc",
-        name_container: "mail-privesc",
-        exposed_port: 22
+      new Role({
+        name: "user"
       }).save(err => {
         if (err) {
           console.log("error", err);
         }
+
+        console.log("added 'user' to roles collection");
       });
 
-      new Container({
-        name: "Challenge 2 : Web-Privesc",
-        name_container: "web-privesc",
-        exposed_port: 80
+      new Role({
+        name: "admin"
       }).save(err => {
         if (err) {
           console.log("error", err);
         }
+
+        console.log("added 'admin' to roles collection");
       });
     }
   });

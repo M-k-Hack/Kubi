@@ -1,15 +1,15 @@
-const checker = require('../middleware/checker');
+const { authJwt } = require("../middlewares");
 
 module.exports = app => {
     const dockerController = require('../controllers/docker.controller');
 
     const router = require("express").Router();
 
-    router.post('/start/:id', dockerController.runContainer);
+    router.post('/start/:id', [authJwt.verifyToken], dockerController.runContainer);
     // route to stop container
-    router.post('/stop/:id', [checker.checkAdmin], dockerController.stopContainer);
+    router.post('/stop/:id', [authJwt.verifyToken, authJwt.isAdmin], dockerController.stopContainer);
 
-    router.post('/running', [checker.checkAdmin], dockerController.getRunningContainers);
+    router.get('/running', [authJwt.verifyToken, authJwt.isAdmin], dockerController.getRunningContainers);
 
     app.use('/api/docker', router);
 }
