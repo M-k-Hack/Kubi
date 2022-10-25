@@ -17,7 +17,9 @@
     "cookie-parser": "^1.4.6",
     "dockerode": "^3.3.4",
     "dotenv": "^16.0.3",
+    "ejs": "^3.1.8",
     "express-fileupload": "^1.4.0",
+    "html": "^1.0.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.6.6"
   }

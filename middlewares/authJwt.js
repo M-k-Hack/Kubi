@@ -5,12 +5,11 @@ const User = db.user;
 const Role = db.role;
 
 verifyToken = (req, res, next) => {
-  
   let token = req.cookies['token'];
-  console.log(token);
 
   if (!token) {
-    return res.status(403).send({ message: "No token provided!" });
+    // return res.status(403).send({ message: "No token provided!" });
+    return res.redirect(302, '/login');
   }
 
   jwt.verify(token, config.SECRET, (err, decoded) => {

@@ -1,9 +1,9 @@
 module.exports = app => {
-    const containerController = require('../controllers/container.controller');
+    const containerController = require('../controllers/images.controller');
 
     const router = require("express").Router();
 
     router.get('/', containerController.findAll);
 
-    app.use('/api/container', router);
+    app.use('/api/images', router);
 }

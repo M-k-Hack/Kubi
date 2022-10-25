@@ -72,8 +72,15 @@ exports.stopContainer = (req, res) => {
 exports.getRunningContainers = (req, res) => {
     var docker = new DockerSocket({ socketPath: '/var/run/docker.sock' });
     docker.listContainers(function (err, containers) {
-        console.log(containers);
         res.status(200).json({ "response": containers });
+    });
+}
+
+// Get All Images
+exports.getAllImages = (req, res) => {
+    var docker = new DockerSocket({ socketPath: '/var/run/docker.sock' });
+    docker.listImages(function (err, images) {
+        res.status(200).json({ "response": images });
     });
 }
 

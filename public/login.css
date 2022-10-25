@@ -25,14 +25,8 @@ img {
     margin-bottom: 50px;
 }
 
-/* Center input*/
-input[type=text] {
-    display: block;
-    margin: 0 auto;
-}
-
-/* Style input */
-input[type=text] {
+input[type="text"] {
+    /* style element */
     width: 250px;
     height: 30px;
     border: 1px solid #999;
@@ -41,27 +35,41 @@ input[type=text] {
     background-color: #eee;
     border-radius: 5px;
     box-shadow: 4px 4px #ccc;
-}
 
-/* Input file */
-input[type=file] {
+    /* center element */
     display: block;
     margin: 0 auto;
+    margin-bottom: 20px;
 }
 
-/*Center button*/
-button {
-    display: block;
-    margin: 0 auto;
-}
-
-/* Style button */
-input {
-    margin-top: 20px;
+input[type="password"] {
+    /* style element */
     width: 250px;
+    height: 30px;
+    border: 1px solid #999;
+    font-size: 18px;
+    color: #1c87c9;
+    background-color: #eee;
+    border-radius: 5px;
+    box-shadow: 4px 4px #ccc;
+
+    /* center element */
+    display: block;
+    margin: 0 auto;
+}
+
+input[type=submit] {
+    /* Center */
+    display: block;
+    margin: 0 auto;
+
+    /* Style */
+    margin-top: 20px;
+    width: 200px;
     height: 30px;
     font-family: inherit;
     font-size: large;
     border: none;
     border-radius: 5px;
+
 }

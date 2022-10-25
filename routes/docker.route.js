@@ -13,5 +13,7 @@ module.exports = app => {
 
     router.post('/build', dockerController.buildContainer);
 
+    router.get('/images', [authJwt.verifyToken, authJwt.isAdmin], dockerController.getAllImages);
+
     app.use('/api/docker', router);
 }

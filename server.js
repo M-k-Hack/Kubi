@@ -2,7 +2,9 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const fileUpload = require('express-fileupload');
 const cookieParser = require('cookie-parser');
+
 const dockerModel = require('./models/docker.model');
+const { authJwt } = require("./middlewares");
 
 const app = express()
 const port = 3000
@@ -12,9 +14,13 @@ const port = 3000
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(fileUpload());
-app.use(express.static(__dirname + '/front'));
-app.use(express.static(__dirname + '/admin'));
+app.use(express.static(__dirname + '/public/'));
 app.use(cookieParser());
+
+
+app.set('views', __dirname + '/views');
+app.engine('html', require('ejs').renderFile);
+
 
 // Model db
 const db = require("./models");
@@ -43,7 +49,7 @@ db.mongoose
 
 // get docker routes
 require("./routes/docker.route.js")(app);
-require("./routes/container.route.js")(app);
+require("./routes/images.route.js")(app);
 require("./routes/auth.route.js")(app);
 require("./routes/user.route.js")(app);
 
@@ -51,19 +57,28 @@ require("./routes/user.route.js")(app);
 setInterval(dockerModel.deleteExpiredContainer.bind(null, 60), 60000);
 
 
-// Send front
-app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/front/index.html');
+app.get('/login', (req, res) => {
+  res.render('login.html');
 })
 
-app.get('/admin', (req, res) => {
-  res.sendFile(__dirname + '/admin/admin.html');
+app.get('/admin',[authJwt.verifyToken, authJwt.isAdmin], (req, res) => {
+  res.render('admin.html');
 })
+
+// Send front
+app.get('/', [authJwt.verifyToken], (req, res) => {
+  res.render('main.html');
+  // res.sendFile(__dirname + '/front/index.html');
+})
+
+
+
 
 // start server
 app.listen(port, "0.0.0.0", () => {
   console.log(`MAK'HACK Docker Orchestrer Express App on port ${port}`)
 });
+
 
 function initial() {
   Role.estimatedDocumentCount((err, count) => {

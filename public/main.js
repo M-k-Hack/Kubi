@@ -1,7 +1,7 @@
 // Get all containers for select 
 function getContainer() {
     var data = {}
-    fetch('/api/container')
+    fetch('/api/images')
         .then(response => response.json())
         .then(data => {
             var select = document.getElementById('standard-select');
