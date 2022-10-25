@@ -5,6 +5,7 @@ const Container = mongoose.model(
     new mongoose.Schema({
         name: String,
         name_container: String,
+        image_id: String,
         exposed_port: Number
     })
 );

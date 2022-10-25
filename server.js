@@ -32,19 +32,21 @@ const dbConfig = require("./config/db.config.js");
 
 // Connect to db
 db.mongoose
-.connect(`mongodb://${dbConfig.HOST}:${dbConfig.PORT}/${dbConfig.DB}`, {
-  user: dbConfig.USER,
-  pass: dbConfig.PASSWORD,
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-})
-.then(() => {
-  console.log("Successfully connect to MongoDB.");
-})
-.catch(err => {
-  console.error("Connection error", err);
-  process.exit();
-});
+  .connect(`mongodb://${dbConfig.HOST}:${dbConfig.PORT}/${dbConfig.DB}`, {
+    user: dbConfig.USER,
+    pass: dbConfig.PASSWORD,
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  })
+  .then(() => {
+    initial();
+
+    console.log("Successfully connect to MongoDB.");
+  })
+  .catch(err => {
+    console.error("Connection error", err);
+    process.exit();
+  });
 
 
 // get docker routes
@@ -61,7 +63,7 @@ app.get('/login', (req, res) => {
   res.render('login.html');
 })
 
-app.get('/admin',[authJwt.verifyToken, authJwt.isAdmin], (req, res) => {
+app.get('/admin', [authJwt.verifyToken, authJwt.isAdmin], (req, res) => {
   res.render('admin.html');
 })
 
@@ -81,27 +83,20 @@ app.listen(port, "0.0.0.0", () => {
 
 
 function initial() {
-  Role.estimatedDocumentCount((err, count) => {
+  Container.estimatedDocumentCount((err, count) => {
     if (!err && count === 0) {
-      new Role({
-        name: "user"
+      new Container({
+        name: "HelloTest",
+        image: "hello-world",
+        port: 80,
+        image_id: "sha256:feb5d9fea6a5e9606aa995e879d862b825965ba48de054caab5ef356dc6b34120"
       }).save(err => {
         if (err) {
           console.log("error", err);
         }
-
-        console.log("added 'user' to roles collection");
-      });
-
-      new Role({
-        name: "admin"
-      }).save(err => {
-        if (err) {
-          console.log("error", err);
-        }
-
-        console.log("added 'admin' to roles collection");
-      });
+        console.log("added 'HelloTest' to container collection");
+      }
+      );
     }
   });
 }

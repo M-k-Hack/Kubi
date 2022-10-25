@@ -79,8 +79,22 @@ exports.getRunningContainers = (req, res) => {
 // Get All Images
 exports.getAllImages = (req, res) => {
     var docker = new DockerSocket({ socketPath: '/var/run/docker.sock' });
+    //var containersdb = Container.find({}, { name: 1, name_container: 1, _id: 0 })
     docker.listImages(function (err, images) {
-        res.status(200).json({ "response": images });
+        var containersdb = Container.find({}, { name: 1, name_container: 1, image_id:1, _id: 0 }).then(data => {
+            for(var i = 0; i < images.length; i++) {
+                for(var j = 0; j< data.length; j++) {
+                    if(images[i].Id == data[j].image_id) {
+                        console.log(images[i].Id)
+                        console.log(data[j].image_id)
+                        images[i].isInMongo = true;
+                    } else {
+                        images[i].isInMongo = false;
+                    }
+                }
+            }
+            res.status(200).json({ "response": images });
+        });
     });
 }
 
