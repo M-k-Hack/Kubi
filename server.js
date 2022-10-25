@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const fileUpload = require('express-fileupload');
+const cookieParser = require('cookie-parser');
 const dockerModel = require('./models/docker.model');
 
 const app = express()
@@ -13,6 +14,7 @@ app.use(bodyParser.json());
 app.use(fileUpload());
 app.use(express.static(__dirname + '/front'));
 app.use(express.static(__dirname + '/admin'));
+app.use(cookieParser());
 
 // Model db
 const db = require("./models");

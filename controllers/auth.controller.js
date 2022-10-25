@@ -84,7 +84,6 @@ exports.signin = (req, res) => {
 
       if (!passwordIsValid) {
         return res.status(401).send({
-          accessToken: null,
           message: "Invalid Password!"
         });
       }
@@ -99,12 +98,12 @@ exports.signin = (req, res) => {
       for (let i = 0; i < user.roles.length; i++) {
         authorities.push("ROLE_" + user.roles[i].name.toUpperCase());
       }
+      res.cookie('token', token, { httpOnly: true });
       res.status(200).send({
         id: user._id,
         username: user.username,
         email: user.email,
-        roles: authorities,
-        accessToken: token
+        roles: authorities
       });
     });
 };
