@@ -85,11 +85,7 @@ exports.getAllImages = (req, res) => {
             for(var i = 0; i < images.length; i++) {
                 for(var j = 0; j< data.length; j++) {
                     if(images[i].Id == data[j].image_id) {
-                        console.log(images[i].Id)
-                        console.log(data[j].image_id)
                         images[i].isInMongo = true;
-                    } else {
-                        images[i].isInMongo = false;
                     }
                 }
             }

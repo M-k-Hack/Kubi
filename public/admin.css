@@ -37,16 +37,22 @@ img {
     width: 40%;
     background-color: red;
     border-radius: 15px;
-}
-
-.running p {
-    display: inline;
-    margin-left: 10px;
     margin-right: 10px;
+    margin-left: 10px;
 }
 
 .images {
     width: 30%;
     background-color: blue;
     border-radius: 15px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+table {
+    margin: 0 auto; /* or margin: 0 auto 0 auto */
+}
+
+table td {
+    padding: 10px;
 }
